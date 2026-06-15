@@ -24,14 +24,16 @@ body {
     overflow-x: hidden;
 }
 
-/* --- NAVIGATION BAR --- */
+/* ==========================================================================
+   DESKTOP NAVIGATION (Default View)
+   ========================================================================== */
 navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Logo on left, Links on right */
     align-items: center;
     padding: 20px 8%;
     background: var(--glass);
@@ -41,6 +43,15 @@ navbar {
     z-index: 1000;
 }
 
+/* STRIKTLY HIDDEN ON DESKTOP - This keeps the menu button invisible on computers */
+.menu-toggle {
+    display: none; 
+    font-size: 1.5rem;
+    color: var(--text-main);
+    cursor: pointer;
+    z-index: 1001;
+}
+
 .logo {
     font-family: 'Playfair Display', serif;
     font-size: 1.5rem;
@@ -48,10 +59,6 @@ navbar {
     letter-spacing: 2px;
     color: var(--text-main);
     text-transform: uppercase;
-}
-
-.logo span {
-    color: var(--accent);
 }
 
 .nav-links {
@@ -73,7 +80,7 @@ navbar {
     color: var(--text-main);
 }
 
-/* Contact Button & Interactive Dropdown */
+/* Contact Button & Dropdown Box */
 .contact-container {
     position: relative;
 }
@@ -136,7 +143,7 @@ navbar {
 
 .contact-row i {
     font-size: 1.4rem;
-    color: #25D366; /* WhatsApp Brand Color */
+    color: #25D366;
 }
 
 .contact-dropdown a {
@@ -312,16 +319,137 @@ navbar {
     line-height: 1.5;
 }
 
-/* --- ANIMATIONS --- */
+/* --- CENTERED FOOTER --- */
+footer {
+    background-color: var(--bg-primary);
+    border-top: 1px solid var(--border-glass);
+    padding: 50px 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.footer-address {
+    color: var(--accent-gold);
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    line-height: 1.6;
+}
+
+.footer-address i {
+    color: var(--accent);
+    margin-right: 8px;
+}
+
+.footer-address a {
+    color: var(--accent-gold);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-address a:hover {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+.footer-copyright {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Mobile Responsiveness */
+
+/* ==========================================================================
+   PHONE / MOBILE RESPONSIVE VIEW (Activates below 768px wide)
+   ========================================================================== */
 @media (max-width: 768px) {
-    navbar { padding: 20px 5%; }
-    .nav-links { display: none; } 
-    .hero h1 { font-size: 2.8rem; }
-    .grid { grid-template-columns: 1fr; }
+    navbar {
+        padding: 15px 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* ONLY SHOWS ON PHONE - The hamburger button wakes up here */
+    .menu-toggle {
+        display: block;
+        order: 1; /* Forces the button to stay on the absolute left */
+    }
+
+    .logo {
+        font-size: 1.1rem;
+        order: 2; /* Pushes the restaurant name safely to the right side */
+        text-align: right;
+    }
+
+    /* Turns the horizontal link bar into a hidden full-screen slider drawer */
+    .nav-links {
+        position: fixed;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 75px);
+        background: rgba(10, 10, 10, 0.98);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        flex-direction: column;
+        justify-content: center;
+        gap: 40px;
+        transform: translateX(-100%); /* Hides it off-screen to the left */
+        transition: transform 0.4s cubic-bezier(0.1, 0.9, 0.2, 1);
+        border-top: 1px solid var(--border-glass);
+    }
+
+    /* When JavaScript adds .active, the menu slides smoothly onto the phone screen */
+    .nav-links.active {
+        transform: translateX(0);
+    }
+
+    .nav-links a {
+        font-size: 1.3rem;
+    }
+
+    /* Centers the message pop-up dead-center on small device screens */
+    .contact-dropdown {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        right: auto;
+        transform: translate(-50%, -50%) scale(0.9);
+        width: 85%;
+        max-width: 320px;
+    }
+
+    .contact-dropdown.show {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .grid {
+        grid-template-columns: 1fr; /* Stacks menu cards neatly in a single column */
+    }
 }

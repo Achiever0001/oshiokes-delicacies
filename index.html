@@ -10,9 +10,16 @@
 </head>
 <body>
 
+  <!-- NAVBAR -->
     <navbar>
+        <!-- Moved Mobile Hamburger Menu Button here for top-left positioning -->
+        <div class="menu-toggle" id="mobileBtn">
+            <i class="fas fa-bars"></i>
+        </div>
+
         <div class="logo">OSHIOKES DELICACIES</div>
-        <ul class="nav-links">
+
+        <ul class="nav-links" id="navLinks">
             <li><a href="#" class="active">Home</a></li>
             <li><a href="#menu">Our Legacy</a></li>
             <li><a href="#menu">Signature Dishes</a></li>
@@ -30,6 +37,7 @@
         </ul>
     </navbar>
 
+    <!-- HERO SECTION -->
     <section class="hero">
         <div class="hero-content">
             <h1>The Fine Art of <span>Nigerian Dining</span></h1>
@@ -38,6 +46,7 @@
         </div>
     </section>
 
+    <!-- MENU SECTION -->
     <section class="menu-section" id="menu">
         <div class="section-header">
             <p>Exquisite Masterpieces</p>
@@ -45,10 +54,11 @@
         </div>
 
         <div class="grid">
+            <!-- Item 1: Pizza -->
             <div class="menu-card">
                 <div class="img-container">
-                    <span class="badge">Chef's Choice</span>
-                    <img src="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?q=80&w=2070&auto=format&fit=crop" alt="Smoky Jollof Rice Showcase">
+                    <span class="badge">Artisan Bake</span>
+                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1974&auto=format&fit=crop" alt="Premium Pizza Presentation">
                 </div>
                 <div class="card-info">
                     <div class="card-title-row">
@@ -59,10 +69,11 @@
                 </div>
             </div>
 
+            <!-- Item 2: Salad -->
             <div class="menu-card">
                 <div class="img-container">
-                    <span class="badge">Royal Tier</span>
-                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=2080&auto=format&fit=crop" alt="Premium Seafood presentation">
+                    <span class="badge">Fresh Tier</span>
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=2080&auto=format&fit=crop" alt="Gourmet Salad Platter">
                 </div>
                 <div class="card-info">
                     <div class="card-title-row">
@@ -73,6 +84,7 @@
                 </div>
             </div>
 
+            <!-- Item 3: Wagyu Suya -->
             <div class="menu-card">
                 <div class="img-container">
                     <span class="badge">Authentic Smoke</span>
@@ -88,6 +100,21 @@
             </div>
         </div>
     </section>
+
+    <!-- MODERN FOOTER WITH GOOGLE MAPS LINK -->
+    <footer>
+        <div class="footer-content">
+            <p class="footer-address">
+                <i class="fas fa-map-marker-alt"></i> 
+                <a href="https://www.google.com/maps/search/?api=1&query=Port+Harcourt+Pleasure+Park+Aba+Road+Port+Harcourt" target="_blank" rel="noopener noreferrer">
+                    Port Harcourt Pleasure Park, Aba Road, Port Harcourt, Rivers State, Nigeria.
+                </a>
+            </p>
+            <p class="footer-copyright">
+                &copy; 2026 Oshiokes Delicacies. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
